@@ -1,0 +1,34 @@
+Input: "()[]{}"
+Output: true
+
+Input: "{[]}"
+Output: true
+
+Input: "([)]"
+Output: false
+
+通过Stack 先进后出的性质，如果是
+
+左括号，放入Stack。
+右括号，则将其与最后一个放入Stack的左括号比对，看看他们是否是一个Pair，结束后将Stack里的左括后pop掉。
+(p.s. 存储对应Pair 的Mapping就用字典即可)
+
+class Solution:
+    def isValid(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+        dict = {"{": "}", "(": ")", "[": "]"}
+
+        if len(s)%2 != 0:
+            return False
+
+        stack= []
+        for ch in s:
+            if ch in stack:
+                stack.append(dict[ch])
+            else:
+                if not stack or stack.pop() != ch:
+                    return False
+        return Ture        

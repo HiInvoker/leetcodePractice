@@ -1,0 +1,51 @@
+Input: -123
+Output: -321
+
+Input: 120
+Output: 21
+
+
+class Solution:
+    def reverse(self, x):
+        """
+        :type x: int
+        :rtype: int
+        """
+
+        term = 1
+        if (x < 0):
+            term = -1
+
+        x = abs(x)
+        tmp = 0
+
+        while (x > 0):
+            tmp = tmp*10 + x%10
+            x = x // 10
+
+        tmp *= term
+
+        return tmp
+
+def main():
+    import sys
+    import io
+    def readlines():
+        for line in io.TextIOWrapper(sys.stdin.buffer, encoding='utf-8'):
+            yield line.strip('\n')
+
+    lines = readlines()
+    while True:
+        try:
+            line = next(lines)
+            x = int(line);
+
+            ret = Solution().reverse(x)
+
+            out = str(ret);
+            print(out)
+        except StopIteration:
+            break
+
+if __name__ == '__main__':
+    main()

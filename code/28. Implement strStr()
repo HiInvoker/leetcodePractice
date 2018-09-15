@@ -1,0 +1,26 @@
+28. Implement strStr()
+
+Input: haystack = "aaaaa", needle = "bba"
+Output: -1
+
+Input: haystack = "hello", needle = "ll"
+Output: 2
+
+1：
+class Solution:
+    def strStr(self, haystack, needle):
+        """
+        :type haystack: str
+        :type needle: str
+        :rtype: int
+        """
+
+        lenn = len(needle)
+        lenh = len(haystack)
+        i = 0
+        while (i <= lenh - lenn):
+            if (needle == haystack[i:lenn]):
+                return i
+            else:
+                i += 1
+        return -1
