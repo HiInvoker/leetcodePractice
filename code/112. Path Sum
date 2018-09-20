@@ -1,0 +1,65 @@
+
+Given a binary tree and a sum, determine if the tree has a root-to-leaf path such that adding up all the values along the path equals the given sum.
+
+Note: A leaf is a node with no children.
+
+Example:
+
+Given the below binary tree and sum = 22,
+
+      5
+     / \
+    4   8
+   /   / \
+  11  13  4
+ /  \      \
+7    2      1
+return true, as there exist a root-to-leaf path 5->4->11->2 which sum is 22.
+
+1.递归：
+class Solution:
+    def hasPathSum(self, root, sum):
+        if not root:
+            return False
+        if not (root.left or root.right) and root.val == sum:
+            return True
+        return self.hasPathSum(root.left, sum-root.val) or self.hasPathSum(root.right, sum-root.val)
+
+2.recursion:
+class Solution(object):
+    def hasPathSum(self, root, sum):
+        """
+        :type root: TreeNode
+        :type sum: int
+        :rtype: bool
+        """
+        if not root:
+            return False
+        elif not root.left and not root.right:
+            if root.val == sum:
+                return True
+            else:
+                return False
+        return self.hasPathSum(root.left, sum - root.val) or self.hasPathSum(root.right, sum - root.val)
+
+3.DFS:
+class Solution(object):
+    def hasPathSum(self, root, sum):
+        """
+        :type root: TreeNode
+        :type sum: int
+        :rtype: bool
+        """
+        if not root:
+            return False
+        stack = [(root, sum - root.val)]
+        while stack:
+            u = stack.pop()
+            if not u[0].left and not u[0].right:
+                if u[1] == 0:
+                    return True
+            if u[0].left:
+                stack.append((u[0].left, u[1]-u[0].left.val))
+            if u[0].right:
+                stack.append((u[0].right, u[1]-u[0].right.val))
+        return False
