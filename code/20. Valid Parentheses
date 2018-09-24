@@ -11,7 +11,8 @@ Output: false
 
 左括号，放入Stack。
 右括号，则将其与最后一个放入Stack的左括号比对，看看他们是否是一个Pair，结束后将Stack里的左括后pop掉。
-(p.s. 存储对应Pair 的Mapping就用字典即可)
+(p.s. 存储对应Pair 的Mapping就用字典即可) 还要主要到如 ']{}'. '((' 这种输入，所以要注意stack里面的元素数量，如果第一个
+是右边的符号，那么stack的长度就是0的，如果全是左边的符号，那么stack长度就大于0
 
 class Solution:
     def isValid(self, s):
@@ -19,16 +20,24 @@ class Solution:
         :type s: str
         :rtype: bool
         """
-        dict = {"{": "}", "(": ")", "[": "]"}
+        #'(', ')', '{', '}', '[' and ']'
 
-        if len(s)%2 != 0:
+        wdict = {'(' : ')', '{' : '}', '[' : ']' }
+
+        l = []
+        if len(s)%2 == 1:
             return False
-
-        stack= []
-        for ch in s:
-            if ch in stack:
-                stack.append(dict[ch])
+        else:
+            for char in s:
+                if char in wdict:
+                    l.append(wdict[char])
+                else:
+                    if len(l) > 0:
+                        if char != l.pop():
+                            return False
+                    else:
+                        return False
+            if len(l) > 0:
+                return False
             else:
-                if not stack or stack.pop() != ch:
-                    return False
-        return Ture        
+                return True

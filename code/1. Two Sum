@@ -24,6 +24,20 @@ class Solution:
             else:
                 tail -= 1
 
+######如果输入的数组不是顺序的话，那就要用哈希表了（python里面的dict）
+
+class Solution:
+    def twoSum(self, nums, target):
+        if len(nums) <= 1:
+            return False
+        else:
+            dict = {}
+            for i in range(len(nums)):
+                if nums[i] in dict:
+                    return [dict[nums[i]], i]
+                else:
+                    dict[target - nums[i]] = i
+
 
 def stringToIntegerList(input):
     return json.loads(input)

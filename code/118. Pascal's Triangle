@@ -1,0 +1,23 @@
+Given a non-negative integer numRows, generate the first numRows of Pascal's triangle.
+
+
+In Pascal's triangle, each number is the sum of the two numbers directly above it.
+
+Input: 5
+Output:
+[
+     [1],
+    [1,1],
+   [1,2,1],
+  [1,3,3,1],
+ [1,4,6,4,1]
+]
+
+
+
+#除了1 2 行和首尾的1 之外，其余元素都是上一行 l[i-1]+l[i]之和
+1
+1 1
+1 2 1
+1 3 3 1
+1 4 6 4 1

@@ -23,6 +23,14 @@ class Solution:
         if (tmp == re):
             return True
 
+#########################利用python的字符串切片
+clas Solution:
+    def isPalindrome(self, x):
+
+        new = str(x)
+
+        return True if new == new[::-1] else False
+
 def main():
     import sys
     import io
