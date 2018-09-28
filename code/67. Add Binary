@@ -20,7 +20,7 @@ class Solution:
         from functools import partial
 
         int2 = partial(int, base =2)
-
-        result = int2(a) + int2(b)
-
-        return str(result)
+        if not int(a) and not int(b):
+            return '0'
+        else:
+            return str(bin(int2(a) + int2(b))).lstrip('0b')

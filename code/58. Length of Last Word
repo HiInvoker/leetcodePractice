@@ -11,6 +11,4 @@ class Solution:
         :type s: str
         :rtype: int
         """
-        l = list(s.split())
-        return len(l[-1])
-    
+        return len(s.rstrip(' ').split(' ')[-1])

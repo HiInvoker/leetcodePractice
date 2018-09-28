@@ -38,4 +38,9 @@ class Solution:
         return l
 
 
-需要考虑 999 的情况        
+需要考虑 999 的情况
+
+#简单算法：
+        s = int(''.join(map(str, digits))) + 1
+
+        return [int(s) for s in str(s)]
