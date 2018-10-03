@@ -11,11 +11,45 @@ class Solution:
         :type root: TreeNode
         :rtype: int
         """
-        if (root == None):
+        if root == None:
             return 0
         else:
-            left = self.maxDepth(root.left)
-            right = self.maxDepth(root.right)
-            return max(left, right) + 1
+            return max(self.maxDepth(root.left) +1, self.maxDepth(root.right) +1)
 
+#非递归实现
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution:
+    def levelOrderBottom(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[List[int]]
+        """
+
+        lst = []
+
+        queue = [root]
+
+        while queue:
+            old, queue = queue, []
             
+            level = []
+
+            for item in old:
+                if item:
+                    if item.val != 'x':
+                        level.append(item.val)
+
+            lst.append(level)
+
+            for item in old:
+                if item:
+                    queue.append(item.left)
+                    queue.append(item.right)
+        return lst[::-1][1:]

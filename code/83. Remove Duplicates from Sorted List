@@ -18,16 +18,19 @@ class Solution:
         :type head: ListNode
         :rtype: ListNode
         """
+
         pre = head
         cur = head
 
-        while (cur):
-            if pre.val != cur.val:
-                pre.next = cur
-                pre = cur
+        if cur: #如果head就是空，那就直接返回了
             cur = cur.next
-            pre.next = None
+            while cur:
+                if cur.val != pre.val:
+                    pre.next = cur
+                    pre = cur
+                cur = cur.next
+            pre.next = None  #去掉尾部多余部分
         return head
 
-如果不同，才连起来
-双指针法        
+#如果不同，才连起来
+#双指针法
