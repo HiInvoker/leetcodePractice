@@ -23,17 +23,35 @@ return its minimum depth = 2.
 #         self.left = None
 #         self.right = None
 
+
+#非递归
 class Solution:
     def minDepth(self, root):
         """
         :type root: TreeNode
         :rtype: int
         """
-
         if root == None:
             return 0
         else:
-            left = self.minDepth(root.left)
-            right = self.minDepth(root.right)
+            queue = [root]
 
-            return min(left, right)
+            count = 0
+            while queue:
+                count += 1
+                flag = 0
+                old, queue = queue, []
+
+                for item in old:
+                    if item.left == None and item.right == None:
+                        flag = 1
+                        break
+                    elif item.left == None and item.right:
+                        queue += [item.right]
+                    elif item.left and item.right == None:
+                        queue += [item.left]
+                    else:
+                        queue += [item.left, item.right]
+                if flag:
+                    break
+            return count
