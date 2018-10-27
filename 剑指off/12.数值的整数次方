@@ -1,0 +1,24 @@
+12.数值的整数次方
+
+
+class Solution:
+    def Power(self, base, exponent):
+        # write code here
+
+        if not exponent:
+            return 1
+
+        sign = 1
+        if exponent < 0:
+            sign = -1
+
+        exponent = abs(exponent)
+
+        r = base
+        while exponent>1:
+            r *= base
+            exponent -= 1
+        if sign < 0:
+            return 1/r
+        else:
+            return r

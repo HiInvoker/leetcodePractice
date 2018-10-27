@@ -1,0 +1,14 @@
+13.调整数组顺序使奇数位于偶数前面
+
+class Solution:
+    def reOrderArray(self, array):
+        # write code here
+
+        j = []
+        o = []
+        for i in array:
+            if i % 2 == 0:
+                o.append(i)
+            else:
+                j.append(i)
+        return j+o
