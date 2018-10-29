@@ -1,0 +1,31 @@
+20.包含min函数的栈
+
+定义栈的数据结构，请在该类型中实现一个能够得到栈中所含最小元素的min函数
+（时间复杂度应为O（1））。
+
+class Solution:
+    def __init__(self):
+        self.s1 = []
+        self.s2 = []
+
+    def push(self, node):
+        # write code here
+        if not self.s2:
+            self.s2.append(node)
+        elif self.s2[-1] > node:
+            self.s2.append(node)
+        self.s1.append(node)
+
+    def pop(self):
+        # write code here
+        if self.s1[-1] == self.s2[-1]:
+            self.s2.pop()
+        self.s1.pop()
+
+    def top(self):
+        # write code here
+        return self.s1[-1]
+
+    def min(self):
+        # write code here
+        return self.s2[-1]

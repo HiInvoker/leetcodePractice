@@ -1,0 +1,25 @@
+22.从上往下打印二叉树
+
+从上往下打印出二叉树的每个节点，同层节点从左至右打印
+
+class Solution:
+    # 返回从上到下每个节点值列表，例：[1,2,3]
+    def PrintFromTopToBottom(self, root):
+        # write code here
+
+        if not root:
+            return []
+        else:
+            queue = [root]
+
+            result = []
+            while queue:
+                old, queue = queue, []
+
+                for i in old:
+                    result.append(i.val)
+                    if i.left:
+                        queue.append(i.left)
+                    if i.right:
+                        queue.append(i.right)
+            return result 
