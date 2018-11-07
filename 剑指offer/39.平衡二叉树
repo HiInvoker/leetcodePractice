@@ -1,0 +1,31 @@
+39.平衡二叉树
+输入一棵二叉树，判断该二叉树是否是平衡二叉树。
+
+#左右子树高度差不超过1
+
+# -*- coding:utf-8 -*-
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+class Solution:
+    def IsBalanced_Solution(self, pRoot):
+        # write code here
+
+        if not pRoot:
+            return True
+        else:
+            left = self.depth(pRoot.left)
+            right = self.depth(pRoot.right)
+
+            if abs(left - right) > 1:
+                return False
+            else:
+                return True
+
+    def depth(self, root):
+        if not root:
+            return 0
+        else:
+            return 1+max(self.depth(root.left), self.depth(root.right))
