@@ -13,21 +13,21 @@
 
 # -*- coding:utf-8 -*-
 class Solution:
+    # 返回对应char
     def __init__(self):
         self.s = ''
-        self.count = {}
-    # 返回对应char
+        self.dic = {}
     def FirstAppearingOnce(self):
         # write code here
-        length = len(self.s)
-        for i in range(length):
-            if self.count[self.s[i]] == 1:
-                return self.s[i]
+        for i in self.s:
+            if self.dic[i] == 1:
+                return i
         return '#'
+
     def Insert(self, char):
         # write code here
         self.s += char
-        if char not in self.count:
-            self.count[char] = 1
+        if char not in self.dic:
+            self.dic[char] = 1
         else:
-            self.count[char] += 1
+            self.dic[char] += 1
