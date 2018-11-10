@@ -2,3 +2,28 @@
 
 题目描述
 请实现一个函数，用来判断一颗二叉树是不是对称的。注意，如果一个二叉树同此二叉树的镜像是同样的，定义其为对称的。
+
+
+# Python 简单解法，判断左右子节点的值是否相同即可，并通过递归左右节点遍历整个树
+
+# -*- coding:utf-8 -*-
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+class Solution:
+    def isSymmetrical(self, pRoot):
+        # write code here
+        if not pRoot:
+            return True
+        else:
+            return self.compare(pRoot.left, pRoot.right)
+
+    def compare(self, left, right):
+        if not left and not right:
+            return True
+        elif left and right and left.val == right.val:
+            return self.compare(left.left, right.right) and self.compare(left.right, right.left)
+        else:
+            return False

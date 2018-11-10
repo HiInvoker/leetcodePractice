@@ -1,0 +1,38 @@
+59.按之字形顺序打印二叉树
+
+题目描述
+请实现一个函数按照之字形打印二叉树，即第一行按照从左到右的顺序打印，第二层按照从右至左的顺序打印，
+第三行按照从左到右的顺序打印，其他行以此类推。
+
+
+# -*- coding:utf-8 -*-
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+class Solution:
+    def Print(self, pRoot):
+        # write code here
+
+        flag = 0
+        queue = [pRoot]
+        result = []
+
+        if not pRoot:
+            return []
+        else:
+            while queue:
+                old, queue = queue, []
+                rl = [i.val for i in old]
+                if flag%2:
+                    rl = rl[::-1]
+                flag += 1
+                for i in old:
+                    if i.left:
+                        queue.append(i.left)
+                    if i.right:
+                        queue.append(i.right)
+                result.append(rl)
+
+            return result
