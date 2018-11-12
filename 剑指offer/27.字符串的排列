@@ -15,3 +15,34 @@
 然后把第一个字符逐一和它后面的字符交换。
 
 这个思路，是典型的递归思路。
+
+# -*- coding:utf-8 -*-
+class Solution:
+    def Permutation(self, ss):
+        if len(ss) <=0:
+            return []
+        res = list()
+        self.perm(ss,res,'')
+        uniq = list(set(res))
+        return sorted(uniq)
+    def perm(self,ss,res,path):
+        if ss=='':
+            res.append(path)
+        else:
+            for i in range(len(ss)):
+                self.perm(ss[:i]+ss[i+1:],res,path+ss[i])
+
+# -*- coding:utf-8 -*-
+import itertools
+class Solution:
+    def Permutation(self, ss):
+        # write code here
+        result=[]
+        if not ss:
+            return []
+        else:
+            res=itertools.permutations(ss)
+            for i in res:
+                if "".join(i) not in result:
+                    result.append("".join(i))
+        return result
