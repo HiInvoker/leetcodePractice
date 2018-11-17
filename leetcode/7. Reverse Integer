@@ -31,7 +31,7 @@ class Solution:
     def reverse(self, x):
 
         if x<0:
-        val = -1*int(str(-x)[::-1])
+            val = -1*int(str(-x)[::-1])
         else:
             val = int(str(x)[::-1])
         return val if abs(val) < 2**31-1 else 0
